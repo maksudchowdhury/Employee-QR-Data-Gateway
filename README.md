@@ -56,3 +56,12 @@ This project is licensed under the MIT License.
 For any inquiries or requests, please contact me through my website: [www.maksud.xyz](https://www.maksud.xyz).
 
 ## Here are some screenshots of the application,
+
+![image](https://github.com/user-attachments/assets/7b53d4ef-b867-4779-93c7-50e5f9931715)
+
+---
+
+
+
+
+
