@@ -1,0 +1,9 @@
+
+.img-thumbnail {
+    border: none;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.table > tbody > tr > td {
+    vertical-align: middle;
+}

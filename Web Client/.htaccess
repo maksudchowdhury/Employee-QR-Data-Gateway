@@ -1,0 +1,69 @@
+# Begin .htaccess
+
+# ----------------------------------------------------------------------
+# Prevent directory listing
+# ----------------------------------------------------------------------
+Options -Indexes
+
+
+# ----------------------------------------------------------------------
+# Set default index file
+# ----------------------------------------------------------------------
+DirectoryIndex index.php
+
+# ----------------------------------------------------------------------
+# Prevent access to sensitive files and directories
+# ----------------------------------------------------------------------
+<FilesMatch "(^\.htaccess|^\.git|^\.env|composer\.json|composer\.lock|^README\.md|^LICENSE|^error_log)">
+    Require all denied
+</FilesMatch>
+
+# ----------------------------------------------------------------------
+# Prevent access to PHP files in the uploads folder
+# Ensure no PHP files in the uploads directory can be executed
+# ----------------------------------------------------------------------
+# <Directory "/path/to/uploads">
+#     <FilesMatch "\.php$">
+#         Require all denied
+#     </FilesMatch>
+# </Directory>
+
+# ----------------------------------------------------------------------
+# Protect against clickjacking
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+    Header always append X-Frame-Options SAMEORIGIN
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Disable MIME-type sniffing
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options nosniff
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Enable Cross-Site Scripting (XSS) protection
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+
+# ----------------------------------------------------------------------
+# Prevent access to .htaccess itself
+# ----------------------------------------------------------------------
+<Files .htaccess>
+    Require all denied
+</Files>
+
+# ----------------------------------------------------------------------
+# File upload size and memory limits
+# ----------------------------------------------------------------------
+php_value upload_max_filesize 2M
+php_value post_max_size 8M
+php_value memory_limit 256M
+php_value max_execution_time 30
+php_flag display_errors Off
+
+# End .htaccess
